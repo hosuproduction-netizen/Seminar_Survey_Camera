@@ -437,10 +437,13 @@ function handleSubmit() {
   if (btn.classList.contains('disabled')) return;
 
   var payload = {
-    q1: answers[1], q2: answers[2], q3: answers[3],
-    q4: answers[4], q5: answers[5],
-    q6: document.getElementById('q6').value.trim()
-  };
+  장비규모: answers[1],
+  제품설명: answers[2],
+  궁금증해결: answers[3],
+  구매결정: answers[4],
+  정기행사: answers[5],
+  기타의견: document.getElementById('q6').value.trim()
+};
 
   console.log('Survey submitted:', payload);
 
