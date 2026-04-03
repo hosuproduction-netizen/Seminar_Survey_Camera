@@ -157,7 +157,7 @@ document.getElementById('submit-btn').onclick = function() {
     "SNS마케팅동의": ans["q9"]
   };
   console.log('제출:', payload);
-  fetch("https://script.google.com/macros/s/AKfycbx4flGy5dBVSohJ4EYljAzrQ1tnL6rV-htMaBMWwmpULl9F3f4p_B0cHNtFi-yEzD8E/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(payload)});
+  fetch("https://script.google.com/macros/s/AKfycbxC4yzh0LwsWxMemisp6SIJrdBccmHpZgwariKI6emgBQSmgtvA0HBu7ggojl46ELc/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(payload)});
   document.getElementById('survey').style.display = 'none';
   document.getElementById('success').classList.add('show');
 };
