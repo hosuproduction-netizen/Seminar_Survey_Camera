@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blackmagic PYXIS 세미나 만족도 설문 — 하이픽셀플러스</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --bg: #0c0c0d; --surface: #141416; --surface2: #1c1c1f;
-  --border: rgba(255,255,255,0.07); --border-focus: rgba(255,255,255,0.22);
+  --border: rgba(255,255,255,0.1);
   --text: #f5f4f2; --text2: #d8d7d5; --text3: #999897;
   --accent: #f39200; --accent-dim: rgba(243,146,0,0.08);
 }
@@ -17,446 +17,335 @@ html { scroll-behavior: smooth; }
 body {
   font-family: 'Noto Sans KR', sans-serif;
   background: var(--bg); color: var(--text);
-  min-height: 100vh; display: flex; flex-direction: column;
+  min-height: 100vh; padding: 60px 24px;
+  display: flex; justify-content: center;
 }
-body::before {
-  content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-}
-.page { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+.wrap { width: 100%; max-width: 680px; }
 
-/* LEFT */
-.left {
-  background: var(--surface); padding: 60px 56px;
-  display: flex; flex-direction: column; justify-content: space-between;
-  border-right: 1px solid var(--border);
-  position: sticky; top: 0; height: 100vh; overflow: hidden;
+.form-header { margin-bottom: 32px; }
+.form-header .badge {
+  display: inline-block; font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--accent); font-weight: 600;
+  padding: 5px 10px; border: 1px solid rgba(243,146,0,0.3);
+  border-radius: 2px; background: var(--accent-dim); margin-bottom: 16px;
 }
-.left-bg {
-  position: absolute; inset: 0; z-index: 0;
-  background-image: url('pyxis-bg.jpg'); background-size: contain;
-  background-repeat: no-repeat; background-position: center top; opacity: 0.45;
-}
-.left-bg::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(10,14,22,0) 0%, rgba(10,14,22,0.6) 55%, rgba(10,14,22,1) 80%);
-}
-.deco-ring {
-  position: absolute; width: 480px; height: 480px; border-radius: 50%;
-  border: 1px solid rgba(243,146,0,0.06); bottom: -120px; right: -120px; pointer-events: none;
-}
-.deco-ring::before {
-  content: ''; position: absolute; inset: 32px; border-radius: 50%;
-  border: 1px solid rgba(243,146,0,0.04);
-}
-.left-inner { position: relative; z-index: 1; }
-.left-tag {
-  display: inline-block; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--accent); font-weight: 500; margin-bottom: 32px;
-  padding: 6px 10px; border: 1px solid rgba(243,146,0,0.2);
-  border-radius: 2px; background: var(--accent-dim);
-}
-.left-eyebrow {
-  font-family: 'Barlow Condensed', sans-serif; font-size: 14px; letter-spacing: 5px;
-  text-transform: uppercase; color: var(--text2); margin-bottom: 8px;
-}
-.left-title {
-  font-family: 'Barlow Condensed', sans-serif; font-size: 88px; line-height: .92;
-  font-weight: 800; text-transform: uppercase; letter-spacing: -1px;
-  color: var(--text); margin-bottom: 24px;
-}
-.left-title .models { display: block; font-size: 52px; color: var(--accent); letter-spacing: 1px; }
-.left-title .sub {
-  display: block; font-size: 15px; font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 400; letter-spacing: 0; color: var(--text2); margin-top: 14px; line-height: 1.6;
-}
-.left-desc { font-size: 15px; color: var(--text2); line-height: 1.75; margin-bottom: 36px; }
-.meta-list { display: flex; flex-direction: column; }
-.meta-row {
-  display: flex; gap: 16px; align-items: flex-start;
-  padding: 12px 0; border-top: 1px solid var(--border);
-}
-.meta-row:last-child { border-bottom: 1px solid var(--border); }
-.meta-row-label {
-  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--text3); font-weight: 500; min-width: 52px; padding-top: 2px; flex-shrink: 0;
-}
-.meta-row-value { font-size: 14px; color: var(--text2); line-height: 1.6; display: flex; flex-direction: column; gap: 2px; }
-.meta-row-value small { font-size: 13px; color: var(--text3); }
-.left-footer { position: relative; z-index: 1; font-size: 13px; color: var(--text3); line-height: 1.6; }
-
-/* RIGHT */
-.right { padding: 60px 56px; overflow-y: auto; }
-.form-header { margin-bottom: 36px; }
-.form-header h2 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+.form-header h1 { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
 .form-header p { font-size: 15px; color: var(--text2); line-height: 1.6; }
 
 .notice {
-  display: flex; flex-direction: column; gap: 8px;
-  padding: 16px 18px; background: var(--accent-dim);
-  border: 1px solid rgba(243,146,0,0.15); border-radius: 3px; margin-bottom: 32px;
-}
-.notice-item {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 15px; color: var(--text2); line-height: 1.6;
-}
-.notice-dot {
-  width: 5px; height: 5px; border-radius: 50%;
-  background: var(--accent); flex-shrink: 0; margin-top: 8px;
+  padding: 14px 18px; background: var(--accent-dim);
+  border: 1px solid rgba(243,146,0,0.15); border-radius: 3px;
+  font-size: 14px; color: var(--text2); line-height: 1.6; margin-bottom: 28px;
 }
 
-/* PROGRESS */
-.progress-wrap { margin-bottom: 28px; display: flex; flex-direction: column; gap: 6px; }
-.progress-label { font-size: 13px; color: var(--text2); display: flex; justify-content: space-between; }
-.progress-bar { height: 3px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
-.progress-fill { height: 100%; background: var(--accent); border-radius: 2px; width: 0%; transition: width .35s ease; }
+.progress-wrap { margin-bottom: 28px; }
+.progress-label {
+  font-size: 13px; color: var(--text2);
+  display: flex; justify-content: space-between; margin-bottom: 8px;
+}
+.progress-bar { height: 3px; background: var(--surface2); border-radius: 2px; }
+.progress-fill { height: 100%; background: var(--accent); border-radius: 2px; width: 0%; transition: width .3s; }
 
-/* QUESTION CARD */
+.section-label {
+  font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--accent); font-weight: 600;
+  margin: 28px 0 14px; padding-bottom: 10px;
+  border-bottom: 1px solid rgba(243,146,0,0.15);
+}
+
 .q-card {
   background: var(--surface2); border: 1px solid var(--border);
-  border-radius: 4px; padding: 24px 28px; margin-bottom: 16px;
-  transition: border-color .2s;
+  border-radius: 4px; padding: 22px 24px; margin-bottom: 12px;
 }
-.q-card:hover { border-color: rgba(255,255,255,0.12); }
-.q-number { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
-.q-text { font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.55; margin-bottom: 24px; }
+.q-num { font-size: 11px; letter-spacing: 2px; color: var(--accent); font-weight: 600; margin-bottom: 8px; }
+.q-text { font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.5; margin-bottom: 16px; }
 
-/* LIKERT — 클릭 가능한 커스텀 라디오 */
-.likert { display: flex; flex-direction: column; gap: 12px; }
-.likert-options { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-.likert-option { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.likert-num { font-size: 15px; color: var(--text2); font-weight: 600; }
-.likert-labels { display: flex; justify-content: space-between; }
-.likert-label-text { font-size: 14px; color: var(--text2); font-weight: 400; }
-
-/* 커스텀 원형 버튼 (JS로 선택 처리) */
-.radio-circle {
-  width: 38px; height: 38px; border-radius: 50%;
+.options { display: flex; flex-direction: column; gap: 8px; }
+.opt {
+  padding: 13px 16px; border-radius: 3px;
   border: 1.5px solid var(--border); background: var(--surface);
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: border-color .18s, background .18s, transform .15s;
-  position: relative;
+  font-size: 15px; color: var(--text2); cursor: pointer;
+  display: flex; align-items: center; gap: 12px;
+  transition: border-color .15s, background .15s, color .15s;
+  user-select: none; -webkit-user-select: none;
 }
-.radio-circle::after {
-  content: ''; width: 12px; height: 12px; border-radius: 50%;
-  background: var(--accent); opacity: 0;
-  transition: opacity .15s, transform .15s; transform: scale(0.4);
+.opt .dot {
+  width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  transition: border-color .15s, background .15s;
 }
-.radio-circle:hover { border-color: rgba(243,146,0,0.4); background: rgba(243,146,0,0.04); }
-.radio-circle.selected { border-color: var(--accent); background: var(--accent-dim); transform: scale(1.08); }
-.radio-circle.selected::after { opacity: 1; transform: scale(1); }
+.opt:hover { border-color: rgba(243,146,0,0.5); color: var(--text); }
+.opt.on { border-color: var(--accent); background: var(--accent-dim); color: var(--text); }
+.opt.on .dot { border-color: var(--accent); background: var(--accent); }
 
-/* TEXTAREA */
-.q-textarea {
-  width: 100%; min-height: 120px; background: var(--surface);
-  border: 1px solid var(--border); border-radius: 3px;
-  color: var(--text); font-family: 'Noto Sans KR', sans-serif;
-  font-size: 15px; padding: 14px 16px; resize: vertical;
-  outline: none; transition: border-color .2s; line-height: 1.6;
+.opts-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt-chip {
+  padding: 10px 16px; border-radius: 3px;
+  border: 1.5px solid var(--border); background: var(--surface);
+  font-size: 14px; color: var(--text2); cursor: pointer;
+  transition: border-color .15s, background .15s, color .15s;
+  user-select: none; -webkit-user-select: none;
 }
-.q-textarea::placeholder { color: var(--text3); }
-.q-textarea:focus { border-color: var(--border-focus); }
+.opt-chip:hover { border-color: rgba(243,146,0,0.5); color: var(--text); }
+.opt-chip.on { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
 
-/* SUBMIT */
+.yn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.opt-yn {
+  padding: 13px 16px; border-radius: 3px; text-align: center;
+  border: 1.5px solid var(--border); background: var(--surface);
+  font-size: 14px; color: var(--text2); cursor: pointer;
+  transition: border-color .15s, background .15s, color .15s;
+  user-select: none; -webkit-user-select: none;
+}
+.opt-yn:hover { border-color: rgba(243,146,0,0.5); color: var(--text); }
+.opt-yn.on { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+
 .submit-wrap { margin-top: 28px; }
 .submit-btn {
   width: 100%; padding: 17px; background: var(--accent); color: #0c0c0d;
   border: none; font-size: 15px; font-weight: 700; font-family: inherit;
   cursor: pointer; border-radius: 3px; letter-spacing: .5px;
-  transition: opacity .2s, transform .15s;
   display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: opacity .2s;
 }
-.submit-btn:hover { opacity: .88; transform: translateY(-1px); }
-.submit-btn:active { transform: translateY(0); }
-.submit-btn.disabled { opacity: .35; cursor: not-allowed; pointer-events: none; }
-.submit-note { font-size: 13px; color: var(--text3); text-align: center; margin-top: 12px; line-height: 1.6; }
+.submit-btn:hover { opacity: .88; }
+.submit-btn.off { opacity: .3; cursor: not-allowed; pointer-events: none; }
+.submit-note { font-size: 13px; color: var(--text3); text-align: center; margin-top: 10px; }
 
-/* SUCCESS */
 .success { display: none; text-align: center; padding: 80px 24px; }
 .success.show { display: block; }
 .success-icon {
   width: 60px; height: 60px; background: var(--accent-dim);
   border: 1px solid rgba(243,146,0,0.2); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 28px; font-size: 24px;
+  margin: 0 auto 24px; font-size: 24px;
 }
-.success h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+.success h2 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
 .success p { font-size: 15px; color: var(--text2); line-height: 1.8; }
 
-@media (max-width: 820px) {
-  .page { grid-template-columns: 1fr; }
-  .left { position: static; height: auto; padding: 48px 32px 40px; }
-  .left-title { font-size: 72px; }
-  .deco-ring { display: none; }
-  .right { padding: 48px 32px; }
-}
 @media (max-width: 480px) {
-  .left { padding: 36px 24px 32px; } .right { padding: 36px 24px; }
-  .q-card { padding: 20px 18px; }
+  body { padding: 32px 16px; }
+  .yn-row { grid-template-columns: 1fr; }
 }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
-<div class="page">
+<div class="wrap">
 
-  <!-- LEFT -->
-  <div class="left">
-    <div class="left-bg"></div>
-    <div class="deco-ring"></div>
-    <div class="left-inner">
-      <div class="left-tag">세미나 만족도 설문</div>
-      <div class="left-eyebrow">Blackmagic</div>
-      <h1 class="left-title">
-        PYXIS <span class="models">6K · 12K</span>
-        <span class="sub">소중한 의견이 더 좋은 세미나를 만듭니다</span>
-      </h1>
-      <p class="left-desc">
-        체험 세미나에 참여해 주셔서 감사합니다.<br>
-        아래 설문은 향후 세미나 개선을 위해 활용되며,<br>
-        응답하시는 데 약 1–2분 소요됩니다.
-      </p>
-      <div class="meta-list">
-        <div class="meta-row">
-          <span class="meta-row-label">세미나</span>
-          <span class="meta-row-value">Blackmagic PYXIS 체험 세미나</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-row-label">일자</span>
-          <span class="meta-row-value">2026년 4월 7일 (화) · 8일 (수)</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-row-label">장소</span>
-          <span class="meta-row-value">
-            SLR렌탈 합정점 호리존 스튜디오
-            <small>서울시 마포구 양화로10길 37, 2F</small>
-          </span>
-        </div>
-      </div>
+  <div id="survey">
+    <div class="form-header">
+      <div class="badge">Blackmagic PYXIS 체험 세미나</div>
+      <h1>만족도 설문</h1>
+      <p>모든 문항은 선택형입니다. 솔직한 답변이 큰 도움이 됩니다.</p>
     </div>
-    <div class="left-footer">
-      Blackmagic Design 공식 총판 · 하이픽셀플러스<br>
-      문의: hipixelplus@hipixelplus.com / 031-450-3515
+
+    <div class="notice">
+      설문 결과는 <strong style="color:var(--accent)">익명으로 처리</strong>되며, 세미나 운영 개선에만 활용됩니다.
     </div>
-  </div>
 
-  <!-- RIGHT -->
-  <div class="right">
-    <div id="survey-body">
-      <div class="form-header">
-        <h2>만족도 설문</h2>
-        <p>각 문항에 솔직하게 답변해 주세요. 답변은 세미나 개선에만 사용됩니다.</p>
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>응답 진행도</span>
+        <span id="prog-text">0 / 9 완료</span>
       </div>
-      <div class="notice">
-        <div class="notice-item">
-          <div class="notice-dot"></div>
-          <span>설문 결과는 <strong style="color:var(--accent)">익명으로 처리</strong>되며, 향후 세미나 기획 및 운영 개선에만 활용됩니다.</span>
-        </div>
-        <div class="notice-item">
-          <div class="notice-dot"></div>
-          <span>5점에 가까울수록 긍정적인 응답입니다. (1: 매우 그렇지 않다 → 5: 매우 그렇다)</span>
-        </div>
-      </div>
-
-      <div class="progress-wrap">
-        <div class="progress-label">
-          <span>응답 진행도</span>
-          <span id="progress-text">0 / 5 완료</span>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-      </div>
-
-      <!-- Q1 -->
-      <div class="q-card">
-        <div class="q-number">Q 01</div>
-        <div class="q-text">체험을 위한 장비의 규모는 적절했나요?</div>
-        <div class="likert">
-          <div class="likert-options" data-q="1">
-            <div class="likert-option"><span class="likert-num">1</span><div class="radio-circle" data-q="1" data-v="1"></div></div>
-            <div class="likert-option"><span class="likert-num">2</span><div class="radio-circle" data-q="1" data-v="2"></div></div>
-            <div class="likert-option"><span class="likert-num">3</span><div class="radio-circle" data-q="1" data-v="3"></div></div>
-            <div class="likert-option"><span class="likert-num">4</span><div class="radio-circle" data-q="1" data-v="4"></div></div>
-            <div class="likert-option"><span class="likert-num">5</span><div class="radio-circle" data-q="1" data-v="5"></div></div>
-          </div>
-          <div class="likert-labels">
-            <span class="likert-label-text">매우 그렇지 않다</span>
-            <span class="likert-label-text">매우 그렇다</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Q2 -->
-      <div class="q-card">
-        <div class="q-number">Q 02</div>
-        <div class="q-text">담당자의 제품 설명이 적절했나요?</div>
-        <div class="likert">
-          <div class="likert-options" data-q="2">
-            <div class="likert-option"><span class="likert-num">1</span><div class="radio-circle" data-q="2" data-v="1"></div></div>
-            <div class="likert-option"><span class="likert-num">2</span><div class="radio-circle" data-q="2" data-v="2"></div></div>
-            <div class="likert-option"><span class="likert-num">3</span><div class="radio-circle" data-q="2" data-v="3"></div></div>
-            <div class="likert-option"><span class="likert-num">4</span><div class="radio-circle" data-q="2" data-v="4"></div></div>
-            <div class="likert-option"><span class="likert-num">5</span><div class="radio-circle" data-q="2" data-v="5"></div></div>
-          </div>
-          <div class="likert-labels">
-            <span class="likert-label-text">매우 그렇지 않다</span>
-            <span class="likert-label-text">매우 그렇다</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Q3 -->
-      <div class="q-card">
-        <div class="q-number">Q 03</div>
-        <div class="q-text">체험행사를 통해 궁금하신 부분이 해결되셨나요?</div>
-        <div class="likert">
-          <div class="likert-options" data-q="3">
-            <div class="likert-option"><span class="likert-num">1</span><div class="radio-circle" data-q="3" data-v="1"></div></div>
-            <div class="likert-option"><span class="likert-num">2</span><div class="radio-circle" data-q="3" data-v="2"></div></div>
-            <div class="likert-option"><span class="likert-num">3</span><div class="radio-circle" data-q="3" data-v="3"></div></div>
-            <div class="likert-option"><span class="likert-num">4</span><div class="radio-circle" data-q="3" data-v="4"></div></div>
-            <div class="likert-option"><span class="likert-num">5</span><div class="radio-circle" data-q="3" data-v="5"></div></div>
-          </div>
-          <div class="likert-labels">
-            <span class="likert-label-text">매우 그렇지 않다</span>
-            <span class="likert-label-text">매우 그렇다</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Q4 -->
-      <div class="q-card">
-        <div class="q-number">Q 04</div>
-        <div class="q-text">체험행사가 미래 제품 구매 결정에 도움이 되셨나요?</div>
-        <div class="likert">
-          <div class="likert-options" data-q="4">
-            <div class="likert-option"><span class="likert-num">1</span><div class="radio-circle" data-q="4" data-v="1"></div></div>
-            <div class="likert-option"><span class="likert-num">2</span><div class="radio-circle" data-q="4" data-v="2"></div></div>
-            <div class="likert-option"><span class="likert-num">3</span><div class="radio-circle" data-q="4" data-v="3"></div></div>
-            <div class="likert-option"><span class="likert-num">4</span><div class="radio-circle" data-q="4" data-v="4"></div></div>
-            <div class="likert-option"><span class="likert-num">5</span><div class="radio-circle" data-q="4" data-v="5"></div></div>
-          </div>
-          <div class="likert-labels">
-            <span class="likert-label-text">매우 그렇지 않다</span>
-            <span class="likert-label-text">매우 그렇다</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Q5 -->
-      <div class="q-card">
-        <div class="q-number">Q 05</div>
-        <div class="q-text">정기적인 체험행사가 도움이 되실까요?</div>
-        <div class="likert">
-          <div class="likert-options" data-q="5">
-            <div class="likert-option"><span class="likert-num">1</span><div class="radio-circle" data-q="5" data-v="1"></div></div>
-            <div class="likert-option"><span class="likert-num">2</span><div class="radio-circle" data-q="5" data-v="2"></div></div>
-            <div class="likert-option"><span class="likert-num">3</span><div class="radio-circle" data-q="5" data-v="3"></div></div>
-            <div class="likert-option"><span class="likert-num">4</span><div class="radio-circle" data-q="5" data-v="4"></div></div>
-            <div class="likert-option"><span class="likert-num">5</span><div class="radio-circle" data-q="5" data-v="5"></div></div>
-          </div>
-          <div class="likert-labels">
-            <span class="likert-label-text">매우 그렇지 않다</span>
-            <span class="likert-label-text">매우 그렇다</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Q6 -->
-      <div class="q-card">
-        <div class="q-number">Q 06 &nbsp;<span style="font-size:10px;color:var(--text3);font-weight:400;letter-spacing:0;text-transform:none;">선택</span></div>
-        <div class="q-text">
-          기타 건의사항 및 요청사항이 있으시면 아래에 서술해주십시오.<br>
-          <span style="font-size:14px;color:var(--text2);font-weight:400;">추가적으로 시연이나 체험을 원하시는 장비를 추천해주셔도 좋습니다.</span>
-        </div>
-        <textarea class="q-textarea" id="q6" placeholder="자유롭게 작성해 주세요..."></textarea>
-      </div>
-
-      <div class="submit-wrap">
-        <button class="submit-btn disabled" id="submit-btn" onclick="handleSubmit()">
-          <span>설문 제출하기</span>
-          <span>→</span>
-        </button>
-        <p class="submit-note" id="submit-note">Q1–Q5를 모두 선택하시면 제출 버튼이 활성화됩니다.</p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="prog-fill"></div>
       </div>
     </div>
 
-    <div class="success" id="success">
-      <div class="success-icon">✓</div>
-      <h3>설문이 제출되었습니다</h3>
-      <p>소중한 의견 감사합니다.<br>더 좋은 세미나로 찾아뵙겠습니다.<br><br>
-        <span style="color:var(--accent);font-weight:600;">하이픽셀플러스</span> 드림</p>
+    <!-- 섹션 1 -->
+    <div class="section-label">세미나 운영</div>
+
+    <div class="q-card">
+      <div class="q-num">Q 01</div>
+      <div class="q-text">프로그램의 만족도는 어떠셨나요?</div>
+      <div class="options" id="q1">
+        <div class="opt" data-v="매우 만족"><span class="dot"></span>매우 만족</div>
+        <div class="opt" data-v="만족"><span class="dot"></span>만족</div>
+        <div class="opt" data-v="보통"><span class="dot"></span>보통</div>
+        <div class="opt" data-v="아쉬움"><span class="dot"></span>아쉬움</div>
+        <div class="opt" data-v="매우 아쉬움"><span class="dot"></span>매우 아쉬움</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">Q 02</div>
+      <div class="q-text">가장 만족스러웠던 부분은 무엇일까요?</div>
+      <div class="options" id="q2">
+        <div class="opt" data-v="촬영 체험"><span class="dot"></span>촬영 체험</div>
+        <div class="opt" data-v="리졸브 후반작업"><span class="dot"></span>리졸브 후반작업</div>
+        <div class="opt" data-v="소규모 그룹 운영"><span class="dot"></span>소규모 그룹 운영</div>
+        <div class="opt" data-v="담당자 설명"><span class="dot"></span>담당자 설명</div>
+        <div class="opt" data-v="기타"><span class="dot"></span>기타</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">Q 03</div>
+      <div class="q-text">가장 아쉬웠던 부분은 무엇일까요?</div>
+      <div class="options" id="q3">
+        <div class="opt" data-v="체험 시간 부족"><span class="dot"></span>체험 시간 부족</div>
+        <div class="opt" data-v="난이도 어려움"><span class="dot"></span>난이도 어려움</div>
+        <div class="opt" data-v="설명 부족"><span class="dot"></span>설명 부족</div>
+        <div class="opt" data-v="체험 장비 부족"><span class="dot"></span>체험 장비 부족</div>
+        <div class="opt" data-v="기타"><span class="dot"></span>기타</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">Q 04</div>
+      <div class="q-text">체험 시간은 적당했나요?</div>
+      <div class="options" id="q4">
+        <div class="opt" data-v="부족함"><span class="dot"></span>부족함</div>
+        <div class="opt" data-v="적당함"><span class="dot"></span>적당함</div>
+        <div class="opt" data-v="김"><span class="dot"></span>김</div>
+      </div>
+    </div>
+
+    <!-- 섹션 2 -->
+    <div class="section-label">구매 전환</div>
+
+    <div class="q-card">
+      <div class="q-num">Q 05</div>
+      <div class="q-text">오늘 구매 또는 구매 의향이 생기셨나요?</div>
+      <div class="options" id="q5">
+        <div class="opt" data-v="현장 구매했다"><span class="dot"></span>현장 구매했다</div>
+        <div class="opt" data-v="구매 의향 생겼다"><span class="dot"></span>구매 의향 생겼다</div>
+        <div class="opt" data-v="아직 고민 중"><span class="dot"></span>아직 고민 중</div>
+        <div class="opt" data-v="구매 생각 없다"><span class="dot"></span>구매 생각 없다</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">Q 06</div>
+      <div class="q-text">구매 결정에 가장 큰 영향을 준 요소는?</div>
+      <div class="options" id="q6">
+        <div class="opt" data-v="직접 체험해볼 수 있어서"><span class="dot"></span>직접 체험해볼 수 있어서</div>
+        <div class="opt" data-v="현장 할인 혜택"><span class="dot"></span>현장 할인 혜택</div>
+        <div class="opt" data-v="담당자 설명"><span class="dot"></span>담당자 설명</div>
+        <div class="opt" data-v="영상 퀄리티"><span class="dot"></span>영상 퀄리티</div>
+        <div class="opt" data-v="기타"><span class="dot"></span>기타</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">Q 07</div>
+      <div class="q-text">구매를 망설이게 된 가장 큰 이유는?</div>
+      <div class="options" id="q7">
+        <div class="opt" data-v="가격 부담"><span class="dot"></span>가격 부담</div>
+        <div class="opt" data-v="예산 시기 안 맞음"><span class="dot"></span>예산 시기 안 맞음</div>
+        <div class="opt" data-v="타 제품 비교 중"><span class="dot"></span>타 제품 비교 중</div>
+        <div class="opt" data-v="기능 확인 필요"><span class="dot"></span>기능 확인 필요</div>
+        <div class="opt" data-v="해당 없음"><span class="dot"></span>해당 없음 (구매했거나 의향 있음)</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">Q 08</div>
+      <div class="q-text">본 행사를 어떤 경로로 알게 되셨나요? <span style="font-size:13px;color:var(--text3);">복수 선택 가능</span></div>
+      <div class="opts-row" id="q8">
+        <div class="opt-chip" data-v="인스타그램">인스타그램</div>
+        <div class="opt-chip" data-v="네이버카페">네이버카페</div>
+        <div class="opt-chip" data-v="페이스북">페이스북</div>
+        <div class="opt-chip" data-v="카카오플친">카카오 플친</div>
+        <div class="opt-chip" data-v="메일">메일</div>
+        <div class="opt-chip" data-v="기타">기타</div>
+      </div>
+    </div>
+
+    <div class="q-card">
+      <div class="q-num">Q 09</div>
+      <div class="q-text">리뷰·체험 사진을 공식 SNS 마케팅에 활용해도 될까요?</div>
+      <div class="yn-row" id="q9">
+        <div class="opt-yn" data-v="네">네, 활용해도 좋습니다</div>
+        <div class="opt-yn" data-v="아니요">아니요, 사용하지 말아 주세요</div>
+      </div>
+    </div>
+
+    <div class="submit-wrap">
+      <button class="submit-btn off" id="submit-btn">
+        <span>설문 제출하기</span><span>→</span>
+      </button>
+      <p class="submit-note" id="submit-note">모든 문항(Q1–Q9)을 선택하시면 제출 버튼이 활성화됩니다.</p>
     </div>
   </div>
+
+  <div class="success" id="success">
+    <div class="success-icon">✓</div>
+    <h2>설문이 제출되었습니다</h2>
+    <p>소중한 의견 감사합니다.<br>더 좋은 세미나로 찾아뵙겠습니다.<br><br>
+      <span style="color:var(--accent);font-weight:600;">하이픽셀플러스</span> 드림</p>
+  </div>
+
 </div>
 
 <script>
-// 답변 저장 객체
-var answers = { 1: null, 2: null, 3: null, 4: null, 5: null };
+var ans = { q1:null, q2:null, q3:null, q4:null, q5:null, q6:null, q7:null, q8:[], q9:null };
 
-// 원형 버튼 클릭 처리
-document.querySelectorAll('.radio-circle').forEach(function(circle) {
-  circle.addEventListener('click', function() {
-    var q = this.getAttribute('data-q');
-    var v = this.getAttribute('data-v');
-
-    // 같은 문항의 다른 버튼 선택 해제
-    document.querySelectorAll('.radio-circle[data-q="' + q + '"]').forEach(function(c) {
-      c.classList.remove('selected');
-    });
-
-    // 현재 버튼 선택
-    this.classList.add('selected');
-    answers[parseInt(q)] = v;
-
-    updateProgress();
+// 단일 선택 (q1~q7, q9)
+['q1','q2','q3','q4','q5','q6','q7'].forEach(function(qid) {
+  var container = document.getElementById(qid);
+  container.querySelectorAll('.opt').forEach(function(el) {
+    el.onclick = function() {
+      container.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('on'); });
+      el.classList.add('on');
+      ans[qid] = el.getAttribute('data-v');
+      update();
+    };
   });
 });
 
-function updateProgress() {
-  var answered = 0;
-  for (var i = 1; i <= 5; i++) {
-    if (answers[i] !== null) answered++;
-  }
+// q9 yn
+document.getElementById('q9').querySelectorAll('.opt-yn').forEach(function(el) {
+  el.onclick = function() {
+    document.getElementById('q9').querySelectorAll('.opt-yn').forEach(function(o){ o.classList.remove('on'); });
+    el.classList.add('on');
+    ans.q9 = el.getAttribute('data-v');
+    update();
+  };
+});
 
-  var pct = (answered / 5) * 100;
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('progress-text').textContent = answered + ' / 5 완료';
+// q8 복수
+document.getElementById('q8').querySelectorAll('.opt-chip').forEach(function(el) {
+  el.onclick = function() {
+    el.classList.toggle('on');
+    var v = el.getAttribute('data-v');
+    if (el.classList.contains('on')) {
+      ans.q8.push(v);
+    } else {
+      ans.q8 = ans.q8.filter(function(x){ return x !== v; });
+    }
+    update();
+  };
+});
 
-  var btn = document.getElementById('submit-btn');
-  if (answered >= 5) {
-    btn.classList.remove('disabled');
-    document.getElementById('submit-note').textContent = '모든 문항이 완료되었습니다. 제출해 주세요!';
-  } else {
-    btn.classList.add('disabled');
-    document.getElementById('submit-note').textContent = 'Q1–Q5를 모두 선택하시면 제출 버튼이 활성화됩니다.';
-  }
-}
-
-function handleSubmit() {
-  var btn = document.getElementById('submit-btn');
-  if (btn.classList.contains('disabled')) return;
-
+document.getElementById('submit-btn').onclick = function() {
+  if (this.classList.contains('off')) return;
   var payload = {
-  장비규모: answers[1],
-  제품설명: answers[2],
-  궁금증해결: answers[3],
-  구매결정: answers[4],
-  정기행사: answers[5],
-  기타의견: document.getElementById('q6').value.trim()
+    프로그램만족도: ans.q1, 만족스러운부분: ans.q2, 아쉬운부분: ans.q3,
+    체험시간: ans.q4, 구매의향: ans.q5, 구매결정요인: ans.q6,
+    구매망설임이유: ans.q7, 인지경로: ans.q8.join(', '), SNS마케팅동의: ans.q9
+  };
+  console.log(payload);
+  // fetch('https://script.google.com/macros/s/AKfycbxiYErsdUSr23nE8gh3-4DQqytJq80A1BbQpUBZnz26kzSTo9EI6dsNK4JK5N6B3FMB/exec', { method:'POST', body: JSON.stringify(payload) });
+  document.getElementById('survey').style.display = 'none';
+  document.getElementById('success').classList.add('show');
 };
 
-  console.log('Survey submitted:', payload);
-
-  // Google Apps Script 연동 시 아래 주석 해제 후 URL 교체
-  /*
-  fetch('https://script.google.com/macros/s/AKfycbxiYErsdUSr23nE8gh3-4DQqytJq80A1BbQpUBZnz26kzSTo9EI6dsNK4JK5N6B3FMB/exec', {
-    method: 'POST',
-    body: JSON.stringify(payload)
-  });
-  */
-
-  document.getElementById('survey-body').style.display = 'none';
-  document.getElementById('success').classList.add('show');
+function update() {
+  var done = 0;
+  ['q1','q2','q3','q4','q5','q6','q7','q9'].forEach(function(k){ if(ans[k]) done++; });
+  if (ans.q8.length > 0) done++;
+  document.getElementById('prog-fill').style.width = (done/9*100) + '%';
+  document.getElementById('prog-text').textContent = done + ' / 9 완료';
+  var btn = document.getElementById('submit-btn');
+  if (done >= 9) {
+    btn.classList.remove('off');
+    document.getElementById('submit-note').textContent = '모든 문항 완료! 제출해 주세요.';
+  } else {
+    btn.classList.add('off');
+    document.getElementById('submit-note').textContent = '모든 문항(Q1–Q9)을 선택하시면 제출 버튼이 활성화됩니다.';
+  }
 }
 </script>
 </body>
