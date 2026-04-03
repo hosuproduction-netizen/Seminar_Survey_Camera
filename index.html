@@ -6,47 +6,47 @@
 <title>Blackmagic PYXIS 체험 세미나 만족도 설문</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --bg:#0c0c0d; --surface:#141416; --surface2:#1c1c1f; --border:rgba(255,255,255,0.1); --text:#f5f4f2; --text2:#d8d7d5; --text3:#999897; --accent:#f39200; --accent-dim:rgba(243,146,0,0.08); }
-body { font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; padding:60px 24px; display:flex; justify-content:center; }
-.wrap { width:100%; max-width:680px; }
-.form-header { margin-bottom:32px; }
-.badge { display:inline-block; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); font-weight:600; padding:5px 10px; border:1px solid rgba(243,146,0,0.3); border-radius:2px; background:var(--accent-dim); margin-bottom:16px; }
-.form-header h1 { font-size:26px; font-weight:700; margin-bottom:8px; }
-.form-header p { font-size:15px; color:var(--text2); line-height:1.6; }
-.notice { padding:14px 18px; background:var(--accent-dim); border:1px solid rgba(243,146,0,0.15); border-radius:3px; font-size:14px; color:var(--text2); line-height:1.6; margin-bottom:28px; }
-.progress-wrap { margin-bottom:28px; }
-.progress-label { font-size:13px; color:var(--text2); display:flex; justify-content:space-between; margin-bottom:8px; }
-.progress-bar { height:3px; background:var(--surface2); border-radius:2px; }
-.progress-fill { height:100%; background:var(--accent); border-radius:2px; width:0%; transition:width .3s; }
-.q-card { background:var(--surface2); border:1px solid var(--border); border-radius:4px; padding:22px 24px; margin-bottom:12px; }
-.q-num { font-size:11px; letter-spacing:2px; color:var(--accent); font-weight:600; margin-bottom:8px; }
-.q-text { font-size:15px; font-weight:500; color:var(--text); line-height:1.5; margin-bottom:16px; }
-.options { display:flex; flex-direction:column; gap:8px; }
-.opt { padding:13px 16px; border-radius:3px; border:1.5px solid var(--border); background:var(--surface); font-size:15px; color:var(--text2); cursor:pointer; display:flex; align-items:center; gap:12px; transition:border-color .15s,background .15s,color .15s; user-select:none; }
-.opt .dot { width:18px; height:18px; border-radius:50%; flex-shrink:0; border:1.5px solid rgba(255,255,255,0.2); transition:border-color .15s,background .15s; }
-.opt:hover { border-color:rgba(243,146,0,0.5); color:var(--text); }
-.opt.on { border-color:var(--accent); background:var(--accent-dim); color:var(--text); }
-.opt.on .dot { border-color:var(--accent); background:var(--accent); }
-.opts-row { display:flex; flex-wrap:wrap; gap:8px; }
-.opt-chip { padding:10px 16px; border-radius:3px; border:1.5px solid var(--border); background:var(--surface); font-size:14px; color:var(--text2); cursor:pointer; transition:border-color .15s,background .15s,color .15s; user-select:none; }
-.opt-chip:hover { border-color:rgba(243,146,0,0.5); color:var(--text); }
-.opt-chip.on { border-color:var(--accent); background:var(--accent-dim); color:var(--accent); }
-.yn-row { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.opt-yn { padding:13px 16px; border-radius:3px; text-align:center; border:1.5px solid var(--border); background:var(--surface); font-size:14px; color:var(--text2); cursor:pointer; transition:border-color .15s,background .15s,color .15s; user-select:none; }
-.opt-yn:hover { border-color:rgba(243,146,0,0.5); color:var(--text); }
-.opt-yn.on { border-color:var(--accent); background:var(--accent-dim); color:var(--accent); }
-.submit-wrap { margin-top:28px; }
-.submit-btn { width:100%; padding:17px; background:var(--accent); color:#0c0c0d; border:none; font-size:15px; font-weight:700; font-family:inherit; cursor:pointer; border-radius:3px; letter-spacing:.5px; display:flex; align-items:center; justify-content:center; gap:8px; transition:opacity .2s; }
-.submit-btn:hover { opacity:.88; }
-.submit-btn.off { opacity:.3; cursor:not-allowed; pointer-events:none; }
-.submit-note { font-size:13px; color:var(--text3); text-align:center; margin-top:10px; }
-.success { display:none; text-align:center; padding:80px 24px; }
-.success.show { display:block; }
-.success-icon { width:60px; height:60px; background:var(--accent-dim); border:1px solid rgba(243,146,0,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 24px; font-size:24px; }
-.success h2 { font-size:22px; font-weight:700; margin-bottom:10px; }
-.success p { font-size:15px; color:var(--text2); line-height:1.8; }
-@media(max-width:480px){ body{padding:32px 16px;} .yn-row{grid-template-columns:1fr;} }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#0c0c0d;--surface:#141416;--surface2:#1c1c1f;--border:rgba(255,255,255,0.1);--text:#f5f4f2;--text2:#d8d7d5;--text3:#999897;--accent:#f39200;--accent-dim:rgba(243,146,0,0.08);}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:60px 24px;display:flex;justify-content:center;}
+.wrap{width:100%;max-width:680px;}
+.form-header{margin-bottom:32px;}
+.badge{display:inline-block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:600;padding:5px 10px;border:1px solid rgba(243,146,0,0.3);border-radius:2px;background:var(--accent-dim);margin-bottom:16px;}
+.form-header h1{font-size:26px;font-weight:700;margin-bottom:8px;}
+.form-header p{font-size:15px;color:var(--text2);line-height:1.6;}
+.notice{padding:14px 18px;background:var(--accent-dim);border:1px solid rgba(243,146,0,0.15);border-radius:3px;font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:28px;}
+.progress-wrap{margin-bottom:28px;}
+.progress-label{font-size:13px;color:var(--text2);display:flex;justify-content:space-between;margin-bottom:8px;}
+.progress-bar{height:3px;background:var(--surface2);border-radius:2px;}
+.progress-fill{height:100%;background:var(--accent);border-radius:2px;width:0%;transition:width .3s;}
+.q-card{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:22px 24px;margin-bottom:12px;}
+.q-num{font-size:11px;letter-spacing:2px;color:var(--accent);font-weight:600;margin-bottom:8px;}
+.q-text{font-size:15px;font-weight:500;color:var(--text);line-height:1.5;margin-bottom:16px;}
+.options{display:flex;flex-direction:column;gap:8px;}
+.opt{padding:13px 16px;border-radius:3px;border:1.5px solid var(--border);background:var(--surface);font-size:15px;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:12px;transition:border-color .15s,background .15s,color .15s;user-select:none;}
+.opt .dot{width:18px;height:18px;border-radius:50%;flex-shrink:0;border:1.5px solid rgba(255,255,255,0.2);transition:border-color .15s,background .15s;}
+.opt:hover{border-color:rgba(243,146,0,0.5);color:var(--text);}
+.opt.on{border-color:var(--accent);background:var(--accent-dim);color:var(--text);}
+.opt.on .dot{border-color:var(--accent);background:var(--accent);}
+.opts-row{display:flex;flex-wrap:wrap;gap:8px;}
+.opt-chip{padding:10px 16px;border-radius:3px;border:1.5px solid var(--border);background:var(--surface);font-size:14px;color:var(--text2);cursor:pointer;transition:border-color .15s,background .15s,color .15s;user-select:none;}
+.opt-chip:hover{border-color:rgba(243,146,0,0.5);color:var(--text);}
+.opt-chip.on{border-color:var(--accent);background:var(--accent-dim);color:var(--accent);}
+.yn-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.opt-yn{padding:13px 16px;border-radius:3px;text-align:center;border:1.5px solid var(--border);background:var(--surface);font-size:14px;color:var(--text2);cursor:pointer;transition:border-color .15s,background .15s,color .15s;user-select:none;}
+.opt-yn:hover{border-color:rgba(243,146,0,0.5);color:var(--text);}
+.opt-yn.on{border-color:var(--accent);background:var(--accent-dim);color:var(--accent);}
+.submit-wrap{margin-top:28px;}
+.submit-btn{width:100%;padding:17px;background:var(--accent);color:#0c0c0d;border:none;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;border-radius:3px;letter-spacing:.5px;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .2s;}
+.submit-btn:hover{opacity:.88;}
+.submit-btn.off{opacity:.3;cursor:not-allowed;pointer-events:none;}
+.submit-note{font-size:13px;color:var(--text3);text-align:center;margin-top:10px;}
+.success{display:none;text-align:center;padding:80px 24px;}
+.success.show{display:block;}
+.success-icon{width:60px;height:60px;background:var(--accent-dim);border:1px solid rgba(243,146,0,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:24px;}
+.success h2{font-size:22px;font-weight:700;margin-bottom:10px;}
+.success p{font-size:15px;color:var(--text2);line-height:1.8;}
+@media(max-width:480px){body{padding:32px 16px;}.yn-row{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -59,7 +59,7 @@ body { font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:var(--
   </div>
   <div class="notice">설문 결과는 익명으로 처리되며, 세미나 운영 개선에만 활용됩니다.</div>
   <div class="progress-wrap">
-    <div class="progress-label"><span>응답 진행도</span><span id="prog-text">0 / 8 완료</span></div>
+    <div class="progress-label"><span>응답 진행도</span><span id="prog-text">0 / 9 완료</span></div>
     <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
   </div>
   <div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#f39200;font-weight:600;margin:28px 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(243,146,0,0.15)">세미나 운영</div><div class="q-card"><div class="q-num">Q 01</div><div class="q-text">프로그램의 만족도는 어떠셨나요?</div><div class="options" id="q1"><div class="opt" data-v="매우 만족"><span class="dot"></span>매우 만족</div><div class="opt" data-v="만족"><span class="dot"></span>만족</div><div class="opt" data-v="보통"><span class="dot"></span>보통</div><div class="opt" data-v="아쉬움"><span class="dot"></span>아쉬움</div><div class="opt" data-v="매우 아쉬움"><span class="dot"></span>매우 아쉬움</div></div></div>
@@ -70,9 +70,10 @@ body { font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:var(--
 <div class="q-card"><div class="q-num">Q 06</div><div class="q-text">구매 결정에 가장 큰 영향을 준 요소는?</div><div class="options" id="q6"><div class="opt" data-v="직접 체험해볼 수 있어서"><span class="dot"></span>직접 체험해볼 수 있어서</div><div class="opt" data-v="현장 할인 혜택"><span class="dot"></span>현장 할인 혜택</div><div class="opt" data-v="담당자 설명"><span class="dot"></span>담당자 설명</div><div class="opt" data-v="영상 퀄리티"><span class="dot"></span>영상 퀄리티</div><div class="opt" data-v="기타"><span class="dot"></span>기타</div></div></div>
 <div class="q-card"><div class="q-num">Q 07</div><div class="q-text">구매를 망설이게 된 가장 큰 이유는?</div><div class="options" id="q7"><div class="opt" data-v="가격 부담"><span class="dot"></span>가격 부담</div><div class="opt" data-v="예산 시기 안 맞음"><span class="dot"></span>예산 시기 안 맞음</div><div class="opt" data-v="타 제품 비교 중"><span class="dot"></span>타 제품 비교 중</div><div class="opt" data-v="기능 확인 필요"><span class="dot"></span>기능 확인 필요</div><div class="opt" data-v="해당 없음 (구매했거나 의향 있음)"><span class="dot"></span>해당 없음 (구매했거나 의향 있음)</div></div></div>
 <div class="q-card"><div class="q-num">Q 08</div><div class="q-text">본 행사를 어떤 경로로 알게 되셨나요? (복수 선택 가능)</div><div class="opts-row" id="q8"><div class="opt-chip" data-v="인스타그램">인스타그램</div><div class="opt-chip" data-v="네이버카페">네이버카페</div><div class="opt-chip" data-v="페이스북">페이스북</div><div class="opt-chip" data-v="카카오 플친">카카오 플친</div><div class="opt-chip" data-v="메일">메일</div><div class="opt-chip" data-v="기타">기타</div></div></div>
+<div class="q-card"><div class="q-num">Q 09</div><div class="q-text">리뷰·체험 사진을 공식 SNS 마케팅에 활용해도 될까요?</div><div class="yn-row" id="q9"><div class="opt-yn" data-v="네, 활용해도 좋습니다">네, 활용해도 좋습니다</div><div class="opt-yn" data-v="아니요, 사용하지 말아 주세요">아니요, 사용하지 말아 주세요</div></div></div>
   <div class="submit-wrap">
     <button class="submit-btn off" id="submit-btn"><span>설문 제출하기</span><span>→</span></button>
-    <p class="submit-note" id="submit-note">모든 문항(Q1–Q8)을 선택하시면 제출 버튼이 활성화됩니다.</p>
+    <p class="submit-note" id="submit-note">모든 문항(Q1–Q9)을 선택하시면 제출 버튼이 활성화됩니다.</p>
   </div>
 </div>
 <div class="success" id="success">
@@ -82,62 +83,105 @@ body { font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:var(--
 </div>
 </div>
 <script>
-var ans = { q1:null,q2:null,q3:null,q4:null,q5:null,q6:null,q7:null,q8:[] };
+var ans = { "q1":null,"q2":null,"q3":null,"q4":null,"q5":null,"q6":null,"q7":null,"q8":[],"q9":null };
 
-document.getElementById('q1') && document.getElementById('q1').querySelectorAll('.opt,.opt-yn').forEach(function(el){
-  el.onclick=function(){ document.getElementById('q1').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');}); el.classList.add('on'); ans.q1=el.getAttribute('data-v'); update(); };
-});
-document.getElementById('q2') && document.getElementById('q2').querySelectorAll('.opt,.opt-yn').forEach(function(el){
-  el.onclick=function(){ document.getElementById('q2').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');}); el.classList.add('on'); ans.q2=el.getAttribute('data-v'); update(); };
-});
-document.getElementById('q3') && document.getElementById('q3').querySelectorAll('.opt,.opt-yn').forEach(function(el){
-  el.onclick=function(){ document.getElementById('q3').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');}); el.classList.add('on'); ans.q3=el.getAttribute('data-v'); update(); };
-});
-document.getElementById('q4') && document.getElementById('q4').querySelectorAll('.opt,.opt-yn').forEach(function(el){
-  el.onclick=function(){ document.getElementById('q4').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');}); el.classList.add('on'); ans.q4=el.getAttribute('data-v'); update(); };
-});
-document.getElementById('q5') && document.getElementById('q5').querySelectorAll('.opt,.opt-yn').forEach(function(el){
-  el.onclick=function(){ document.getElementById('q5').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');}); el.classList.add('on'); ans.q5=el.getAttribute('data-v'); update(); };
-});
-document.getElementById('q6') && document.getElementById('q6').querySelectorAll('.opt,.opt-yn').forEach(function(el){
-  el.onclick=function(){ document.getElementById('q6').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');}); el.classList.add('on'); ans.q6=el.getAttribute('data-v'); update(); };
-});
-document.getElementById('q7') && document.getElementById('q7').querySelectorAll('.opt,.opt-yn').forEach(function(el){
-  el.onclick=function(){ document.getElementById('q7').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');}); el.classList.add('on'); ans.q7=el.getAttribute('data-v'); update(); };
-});
+  document.getElementById('q1') && document.getElementById('q1').querySelectorAll('.opt,.opt-yn').forEach(function(el){
+    el.onclick=function(){
+      document.getElementById('q1').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');});
+      el.classList.add('on'); ans["q1"]=el.getAttribute('data-v'); update();
+    };
+  });
+  document.getElementById('q2') && document.getElementById('q2').querySelectorAll('.opt,.opt-yn').forEach(function(el){
+    el.onclick=function(){
+      document.getElementById('q2').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');});
+      el.classList.add('on'); ans["q2"]=el.getAttribute('data-v'); update();
+    };
+  });
+  document.getElementById('q3') && document.getElementById('q3').querySelectorAll('.opt,.opt-yn').forEach(function(el){
+    el.onclick=function(){
+      document.getElementById('q3').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');});
+      el.classList.add('on'); ans["q3"]=el.getAttribute('data-v'); update();
+    };
+  });
+  document.getElementById('q4') && document.getElementById('q4').querySelectorAll('.opt,.opt-yn').forEach(function(el){
+    el.onclick=function(){
+      document.getElementById('q4').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');});
+      el.classList.add('on'); ans["q4"]=el.getAttribute('data-v'); update();
+    };
+  });
+  document.getElementById('q5') && document.getElementById('q5').querySelectorAll('.opt,.opt-yn').forEach(function(el){
+    el.onclick=function(){
+      document.getElementById('q5').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');});
+      el.classList.add('on'); ans["q5"]=el.getAttribute('data-v'); update();
+    };
+  });
+  document.getElementById('q6') && document.getElementById('q6').querySelectorAll('.opt,.opt-yn').forEach(function(el){
+    el.onclick=function(){
+      document.getElementById('q6').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');});
+      el.classList.add('on'); ans["q6"]=el.getAttribute('data-v'); update();
+    };
+  });
+  document.getElementById('q7') && document.getElementById('q7').querySelectorAll('.opt,.opt-yn').forEach(function(el){
+    el.onclick=function(){
+      document.getElementById('q7').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');});
+      el.classList.add('on'); ans["q7"]=el.getAttribute('data-v'); update();
+    };
+  });
+  document.getElementById('q9') && document.getElementById('q9').querySelectorAll('.opt,.opt-yn').forEach(function(el){
+    el.onclick=function(){
+      document.getElementById('q9').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');});
+      el.classList.add('on'); ans["q9"]=el.getAttribute('data-v'); update();
+    };
+  });
 
-document.getElementById('q8') && document.getElementById('q8').querySelectorAll('.opt-chip').forEach(function(el){
-  el.onclick=function(){ el.classList.toggle('on'); var v=el.getAttribute('data-v'); if(el.classList.contains('on')){ ans.q8.push(v); } else { ans.q8=ans.q8.filter(function(x){return x!==v;}); } update(); };
-});
-document.getElementById('submit-btn').onclick=function(){
-  if(this.classList.contains('off')) return;
-  var payload={ '프로그램의 만족도는 어떠셨나요?': ans.q1,
-    '가장 만족스러웠던 부분은 무엇일까요?': ans.q2,
-    '가장 아쉬웠던 부분은 무엇일까요?': ans.q3,
-    '체험 시간은 적당했나요?': ans.q4,
-    '오늘 구매 또는 구매 의향이 생기셨나': ans.q5,
-    '구매 결정에 가장 큰 영향을 준 요소': ans.q6,
-    '구매를 망설이게 된 가장 큰 이유는?': ans.q7,
-    '본 행사를 어떤 경로로 알게 되셨나요': ans.q8.join(', ') };
-  fetch('https://script.google.com/macros/s/AKfycbx4flGy5dBVSohJ4EYljAzrQ1tnL6rV-htMaBMWwmpULl9F3f4p_B0cHNtFi-yEzD8E/exec',{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)});
-  document.getElementById('survey').style.display='none';
+  document.getElementById('q8') && document.getElementById('q8').querySelectorAll('.opt-chip').forEach(function(el){
+    el.onclick=function(){
+      el.classList.toggle('on');
+      var v=el.getAttribute('data-v');
+      if(el.classList.contains('on')){ ans["q8"].push(v); }
+      else { ans["q8"]=ans["q8"].filter(function(x){return x!==v;}); }
+      update();
+    };
+  });
+document.getElementById('submit-btn').onclick = function() {
+  if (this.classList.contains('off')) return;
+  var payload = {
+    "프로그램만족도": ans["q1"],
+    "만족스러운부분": ans["q2"],
+    "아쉬운부분": ans["q3"],
+    "체험시간": ans["q4"],
+    "구매의향": ans["q5"],
+    "구매결정요인": ans["q6"],
+    "구매망설임이유": ans["q7"],
+    "인지경로": ans["q8"].join(', '),
+    "SNS마케팅동의": ans["q9"]
+  };
+  console.log('제출:', payload);
+  fetch("https://script.google.com/macros/s/AKfycbx4flGy5dBVSohJ4EYljAzrQ1tnL6rV-htMaBMWwmpULl9F3f4p_B0cHNtFi-yEzD8E/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(payload)});
+  document.getElementById('survey').style.display = 'none';
   document.getElementById('success').classList.add('show');
 };
-function update(){
-  var done=0;
-  if(ans.q1) done++;
-  if(ans.q2) done++;
-  if(ans.q3) done++;
-  if(ans.q4) done++;
-  if(ans.q5) done++;
-  if(ans.q6) done++;
-  if(ans.q7) done++;
-  if(ans.q8.length>0) done++;
-  document.getElementById('prog-fill').style.width=(done/8*100)+'%';
-  document.getElementById('prog-text').textContent=done+' / 8 완료';
-  var btn=document.getElementById('submit-btn');
-  if(done>=8){ btn.classList.remove('off'); document.getElementById('submit-note').textContent='모든 문항 완료! 제출해 주세요.'; }
-  else { btn.classList.add('off'); document.getElementById('submit-note').textContent='모든 문항(Q1–Q8)을 선택하시면 제출 버튼이 활성화됩니다.'; }
+function update() {
+  var done = 0;
+  if(ans["q1"]) done++;
+  if(ans["q2"]) done++;
+  if(ans["q3"]) done++;
+  if(ans["q4"]) done++;
+  if(ans["q5"]) done++;
+  if(ans["q6"]) done++;
+  if(ans["q7"]) done++;
+  if(ans["q8"].length>0) done++;
+  if(ans["q9"]) done++;
+  document.getElementById('prog-fill').style.width = (done / 9 * 100) + '%';
+  document.getElementById('prog-text').textContent = done + ' / 9 완료';
+  var btn = document.getElementById('submit-btn');
+  if (done >= 9) {
+    btn.classList.remove('off');
+    document.getElementById('submit-note').textContent = '모든 문항 완료! 제출해 주세요.';
+  } else {
+    btn.classList.add('off');
+    document.getElementById('submit-note').textContent = '모든 문항(Q1-Q9)을 선택하시면 제출 버튼이 활성화됩니다.';
+  }
 }
 </script>
 </body>
