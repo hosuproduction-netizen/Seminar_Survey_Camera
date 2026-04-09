@@ -59,7 +59,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
   </div>
   <div class="notice">설문 결과는 익명으로 처리되며, 세미나 운영 개선에만 활용됩니다.</div>
   <div class="progress-wrap">
-    <div class="progress-label"><span>응답 진행도</span><span id="prog-text">0 / 8 완료</span></div>
+    <div class="progress-label"><span>응답 진행도</span><span id="prog-text">0 / 9 완료</span></div>
     <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
   </div>
   <div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:#f39200;font-weight:600;margin:28px 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(243,146,0,0.15)">세미나 운영</div><div class="q-card"><div class="q-num">Q 01</div><div class="q-text">프로그램의 만족도는 어떠셨나요?</div><div class="options" id="q1"><div class="opt" data-v="매우 만족"><span class="dot"></span>매우 만족</div><div class="opt" data-v="만족"><span class="dot"></span>만족</div><div class="opt" data-v="보통"><span class="dot"></span>보통</div><div class="opt" data-v="아쉬움"><span class="dot"></span>아쉬움</div><div class="opt" data-v="매우 아쉬움"><span class="dot"></span>매우 아쉬움</div></div></div>
@@ -70,9 +70,10 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 <div class="q-card"><div class="q-num">Q 06</div><div class="q-text">구매 결정에 가장 큰 영향을 준 요소는?</div><div class="options" id="q6"><div class="opt" data-v="직접 체험해볼 수 있어서"><span class="dot"></span>직접 체험해볼 수 있어서</div><div class="opt" data-v="현장 할인 혜택"><span class="dot"></span>현장 할인 혜택</div><div class="opt" data-v="담당자 설명"><span class="dot"></span>담당자 설명</div><div class="opt" data-v="영상 퀄리티"><span class="dot"></span>영상 퀄리티</div><div class="opt" data-v="기타"><span class="dot"></span>기타</div></div></div>
 <div class="q-card"><div class="q-num">Q 07</div><div class="q-text">구매를 망설이게 된 가장 큰 이유는?</div><div class="options" id="q7"><div class="opt" data-v="가격 부담"><span class="dot"></span>가격 부담</div><div class="opt" data-v="예산 시기 안 맞음"><span class="dot"></span>예산 시기 안 맞음</div><div class="opt" data-v="타 제품 비교 중"><span class="dot"></span>타 제품 비교 중</div><div class="opt" data-v="기능 확인 필요"><span class="dot"></span>기능 확인 필요</div><div class="opt" data-v="해당 없음 (구매했거나 의향 있음)"><span class="dot"></span>해당 없음 (구매했거나 의향 있음)</div></div></div>
 <div class="q-card"><div class="q-num">Q 08</div><div class="q-text">본 행사를 어떤 경로로 알게 되셨나요? (복수 선택 가능)</div><div class="opts-row" id="q8"><div class="opt-chip" data-v="인스타그램">인스타그램</div><div class="opt-chip" data-v="네이버카페">네이버카페</div><div class="opt-chip" data-v="페이스북">페이스북</div><div class="opt-chip" data-v="카카오 플친">카카오 플친</div><div class="opt-chip" data-v="메일">메일</div><div class="opt-chip" data-v="기타">기타</div></div></div>
+<div class="q-card"><div class="q-num">Q 09</div><div class="q-text">리뷰·체험 사진을 공식 SNS 마케팅에 활용해도 될까요?</div><div class="yn-row" id="q9"><div class="opt-yn" data-v="네, 활용해도 좋습니다">네, 활용해도 좋습니다</div><div class="opt-yn" data-v="아니요, 사용하지 말아 주세요">아니요, 사용하지 말아 주세요</div></div></div>
   <div class="submit-wrap">
     <button class="submit-btn off" id="submit-btn"><span>설문 제출하기</span><span>→</span></button>
-    <p class="submit-note" id="submit-note">모든 문항(Q1–Q8)을 선택하시면 제출 버튼이 활성화됩니다.</p>
+    <p class="submit-note" id="submit-note">모든 문항(Q1–Q9)을 선택하시면 제출 버튼이 활성화됩니다.</p>
   </div>
 </div>
 <div class="success" id="success">
@@ -82,7 +83,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text
 </div>
 </div>
 <script>
-var ans = { "q1":null,"q2":null,"q3":null,"q4":null,"q5":null,"q6":null,"q7":null,"q8":[] };
+var ans = { "q1":null,"q2":null,"q3":null,"q4":null,"q5":null,"q6":null,"q7":null,"q8":[],"q9":null };
 
   document.getElementById('q1') && document.getElementById('q1').querySelectorAll('.opt,.opt-yn').forEach(function(el){
     el.onclick=function(){
@@ -126,6 +127,12 @@ var ans = { "q1":null,"q2":null,"q3":null,"q4":null,"q5":null,"q6":null,"q7":nul
       el.classList.add('on'); ans["q7"]=el.getAttribute('data-v'); update();
     };
   });
+  document.getElementById('q9') && document.getElementById('q9').querySelectorAll('.opt,.opt-yn').forEach(function(el){
+    el.onclick=function(){
+      document.getElementById('q9').querySelectorAll('.opt,.opt-yn').forEach(function(o){o.classList.remove('on');});
+      el.classList.add('on'); ans["q9"]=el.getAttribute('data-v'); update();
+    };
+  });
 
   document.getElementById('q8') && document.getElementById('q8').querySelectorAll('.opt-chip').forEach(function(el){
     el.onclick=function(){
@@ -146,10 +153,11 @@ document.getElementById('submit-btn').onclick = function() {
     "구매의향": ans["q5"],
     "구매결정요인": ans["q6"],
     "구매망설임이유": ans["q7"],
-    "인지경로": ans["q8"].join(', ')
+    "인지경로": ans["q8"].join(', '),
+    "SNS마케팅동의": ans["q9"]
   };
   console.log('제출:', payload);
-  /* Apps Script URL을 에디터에서 입력해 주세요 */
+  fetch("https://script.google.com/macros/s/AKfycbxC4yzh0LwsWxMemisp6SIJrdBccmHpZgwariKI6emgBQSmgtvA0HBu7ggojl46ELc/exec",{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(payload)});
   document.getElementById('survey').style.display = 'none';
   document.getElementById('success').classList.add('show');
 };
@@ -163,15 +171,16 @@ function update() {
   if(ans["q6"]) done++;
   if(ans["q7"]) done++;
   if(ans["q8"].length>0) done++;
-  document.getElementById('prog-fill').style.width = (done / 8 * 100) + '%';
-  document.getElementById('prog-text').textContent = done + ' / 8 완료';
+  if(ans["q9"]) done++;
+  document.getElementById('prog-fill').style.width = (done / 9 * 100) + '%';
+  document.getElementById('prog-text').textContent = done + ' / 9 완료';
   var btn = document.getElementById('submit-btn');
-  if (done >= 8) {
+  if (done >= 9) {
     btn.classList.remove('off');
     document.getElementById('submit-note').textContent = '모든 문항 완료! 제출해 주세요.';
   } else {
     btn.classList.add('off');
-    document.getElementById('submit-note').textContent = '모든 문항(Q1-Q8)을 선택하시면 제출 버튼이 활성화됩니다.';
+    document.getElementById('submit-note').textContent = '모든 문항(Q1-Q9)을 선택하시면 제출 버튼이 활성화됩니다.';
   }
 }
 </script>
